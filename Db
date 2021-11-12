@@ -1,0 +1,158 @@
+/*
+SQLyog Community v12.09 (64 bit)
+MySQL - 5.5.20-log : Database - roadsens
+*********************************************************************
+*/
+
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`roadsens` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `roadsens`;
+
+/*Table structure for table `distruption` */
+
+CREATE TABLE `distruption` (
+  `d_id` int(11) NOT NULL AUTO_INCREMENT,
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `strength` varchar(45) DEFAULT NULL,
+  `date` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`d_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+/*Data for the table `distruption` */
+
+insert  into `distruption`(`d_id`,`latitude`,`longitude`,`strength`,`date`) values (1,11.25,75.78,'3812.3','2020-12-022 18:33:10'),(2,11.25,75.78,'5987.578','2021-01-04 18:33:10'),(4,11.25,75.78,'3428.7996','2021-01-04 18:37:32'),(5,11.25,75.78,'3050.1587','2021-01-04 18:37:33'),(6,11.25,75.78,'5391.8643','2021-01-04 18:37:33');
+
+/*Table structure for table `emergency_alert` */
+
+CREATE TABLE `emergency_alert` (
+  `ea_id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  `descripion` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`ea_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `emergency_alert` */
+
+insert  into `emergency_alert`(`ea_id`,`uid`,`latitude`,`longitude`,`descripion`) values (1,5,11.25,75.78,'The driver was injured when the bus collided '),(2,5,11.25,75.78,'The pedestrian was hit by the bike'),(3,6,11.25,75.78,'the bus overturned due to over speed');
+
+/*Table structure for table `imp_place_reg` */
+
+CREATE TABLE `imp_place_reg` (
+  `ip_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  PRIMARY KEY (`ip_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+/*Data for the table `imp_place_reg` */
+
+insert  into `imp_place_reg`(`ip_id`,`name`,`description`,`latitude`,`longitude`) values (1,'Ashahospital','near poombatta aganavadi\r\nhttp://www.ashahosp',11.6044,75.5876),(2,'Parco Hospital','Parco Hospital\r\nKozhikode Bypass\r\nKozhikode\r\n',11.6081,75.5814),(3,'sp office',' near JBS LP school',11.5783,75.6002),(4,'vatakara police station ','Railway Station Rd, Edodi, Vatakara',11.5948,75.5876),(5,'vadakara traffic police station','Railway Station Rd, Edodi, Vatakara',11.5948,75.5876);
+
+/*Table structure for table `login` */
+
+CREATE TABLE `login` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+/*Data for the table `login` */
+
+insert  into `login`(`id`,`username`,`password`,`type`) values (1,'rose','rose1','admin'),(2,'sree','sree11','police'),(3,'anil','anil12','police'),(4,'athul','athul1','police'),(5,'anu','anu123','user'),(6,'adhi','adhi11','user'),(7,'arya','arya12','user');
+
+/*Table structure for table `spotcomplaint` */
+
+CREATE TABLE `spotcomplaint` (
+  `sc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) DEFAULT NULL,
+  `latitude` varchar(45) DEFAULT NULL,
+  `longitude` varchar(45) DEFAULT NULL,
+  `complaint` varchar(45) DEFAULT NULL,
+  `status` varchar(45) DEFAULT NULL,
+  `policid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`sc_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `spotcomplaint` */
+
+insert  into `spotcomplaint`(`sc_id`,`uid`,`latitude`,`longitude`,`complaint`,`status`,`policid`) values (1,5,'11.25','75.78','breaking traffic rule','i will take necessary action',3),(2,6,'11.25','75.78','driving through the wrong side-kl 56c 3301','pending',NULL),(3,6,'11.25','75.78','strikes on the rod','pending',NULL),(4,7,'11.25','75.78','to drive with out helmel-kl 45 d\n3302','pending',NULL);
+
+/*Table structure for table `traffic_police_reg` */
+
+CREATE TABLE `traffic_police_reg` (
+  `tp_id` int(11) NOT NULL AUTO_INCREMENT,
+  `lid` int(11) DEFAULT NULL,
+  `fname` varchar(45) DEFAULT NULL,
+  `mname` varchar(45) DEFAULT NULL,
+  `lname` varchar(45) DEFAULT NULL,
+  `phone` bigint(20) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`tp_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `traffic_police_reg` */
+
+insert  into `traffic_police_reg`(`tp_id`,`lid`,`fname`,`mname`,`lname`,`phone`,`email`) values (1,2,'sreejith','sreejith','sreejith',9854455562,'sreejith@gmail.com'),(2,3,'anil','anil','anil',5678923456,'anil@gmail.com'),(3,4,'athul','athul','athul',3456782881,'athul@gamil.com');
+
+/*Table structure for table `trafficsignal_reg` */
+
+CREATE TABLE `trafficsignal_reg` (
+  `ts_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `latitude` float DEFAULT NULL,
+  `longitude` float DEFAULT NULL,
+  PRIMARY KEY (`ts_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+/*Data for the table `trafficsignal_reg` */
+
+insert  into `trafficsignal_reg`(`ts_id`,`name`,`latitude`,`longitude`) values (1,' Puthiyara',11.2553,75.7884),(3,'Vadakara bus stand',11.5949,75.5913),(4,'Chalappuram',11.2458,75.8182);
+
+/*Table structure for table `user_location` */
+
+CREATE TABLE `user_location` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `latitude` varchar(45) DEFAULT NULL,
+  `longitude` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `user_location` */
+
+/*Table structure for table `user_reg` */
+
+CREATE TABLE `user_reg` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `lid` int(11) NOT NULL,
+  `fname` varchar(45) NOT NULL,
+  `mname` varchar(45) NOT NULL,
+  `lname` varchar(45) NOT NULL,
+  `phone` bigint(20) NOT NULL,
+  `email_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+/*Data for the table `user_reg` */
+
+insert  into `user_reg`(`uid`,`lid`,`fname`,`mname`,`lname`,`phone`,`email_id`) values (1,5,'anu','anu','anu',9884635458,'anu@gmail.com'),(2,6,'adhi','adhi','adhi',9644569455,'adhi@gmail.com'),(3,7,'arya','arya','arya',8765432236,'arya@gmail.com');
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
